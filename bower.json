@@ -1,0 +1,15 @@
+{
+  "name": "socket-connection",
+  "license" : "MIT",
+  "authors": [
+    "Fabrice Weinberg <fabrice@weinberg.me>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fweinb/socket-connection.git"
+  },
+  "dependencies": {
+    "polymer": "Polymer/polymer#0.3.1",
+    "socket.io-client": "Automattic/socket.io-client#1.0.4"
+  }
+}
