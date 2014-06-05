@@ -13,8 +13,26 @@ The `socket-connection` provides the abiliity to connect to a `socket.io` server
 @status alpha
 -->
 <polymer-element name="socket-connection" attributes="url auto" constructor="SocketConnection">
+  <template><content /></template>
   <script>
     Polymer('socket-connection', {
+       /**
+       * Fired when the socket was successfully connected.
+       *
+       * @event socket-connect
+       */
+
+       /**
+       * Fired when an error occurred.
+       *
+       * @event socket-error
+       */
+
+       /**
+       * Fired when the connection timed out.
+       *
+       * @event socket-timeout
+       */
 
       /**
        * URL to the socket.io server, can be relative to the current server.
@@ -100,7 +118,7 @@ The `socket-connection` provides the abiliity to connect to a `socket.io` server
 
 
 
-<polymer-element name="socket-base" attributes="">
+<polymer-element name="socket-base">
   <script>
     Polymer('socket-base', {
 
@@ -144,7 +162,23 @@ If the value of `chatMessage` is change, it will be emitted to the server.
     Polymer('socket-emitter', {
 
       /**
-       * The value that will be emitted
+       * Name of the event that will be emitted
+       *
+       * @attribute event
+       * @type string
+       * @default undefined
+       */
+
+      /**
+       * Name of the event that is locally fired if an event is emitted.
+       *
+       * @attribute eventLocal
+       * @type string
+       * @default undefined
+       */
+
+      /**
+       * The value that will be emitted.
        *
        * @attribute value
        * @type any
@@ -221,9 +255,15 @@ If the value of `chatMessage` is change, it will be emitted to the server.
 @element socket-receiver
 @status alpha
 -->
-<polymer-element name="socket-receiver" attributes="event eventLocal data handler" extends="socket-base">
+<polymer-element name="socket-receiver" attributes="event data" extends="socket-base">
   <script>
     Polymer('socket-receiver', {
+      /**
+       * Fired when an event is received.
+       *
+       * @event received-data
+       */
+
       /**
        * Name of the event to listen to.
        *
@@ -233,16 +273,7 @@ If the value of `chatMessage` is change, it will be emitted to the server.
        */
 
        /**
-        * Name of the local event that should be fired.
-        * An event is only fired if this attribute is set.
-        *
-        * @attribute eventLocal
-        * @type string
-        * @default undefined
-        */
-
-       /**
-        * Latest data received by this element
+        * Latest data received by this elements event.
         *
         * @attribute data
         * @type any
@@ -250,38 +281,18 @@ If the value of `chatMessage` is change, it will be emitted to the server.
         */
       data : null,
 
-      /**
-       * A Handler function that is called if the event was fired
-       *
-       * @attribute handler
-       * @type function
-       * @default noop func
-       */
-      handler : function(){},
-
-
       connected : function ( ) {
         this.socket.on(this.event, function(data){
-
-           // Attach data to this receiver
-           this.data = data;
-
-           // Call the handler function
-           this.handler(data);
-
-           if ( this.eventLocal ) {
-             this.fire(this.eventLocal, data);
-           }
+          // Attach data to this receiver
+          this.data = data;
+          // Fire `received-data` event
+          this.fire('received-data', data);
         }.bind(this));
       },
 
       detached : function () {
-        this.off(this.event);
+        this.socket.off(this.event);
       }
     });
   </script>
 </polymer-element>
-
-
-
-
