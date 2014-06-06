@@ -1,0 +1,26 @@
+{
+  "name": "socket-connection",
+  "license": "MIT",
+  "authors": [
+    "Fabrice Weinberg <fabrice@weinberg.me>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fweinb/socket-connection.git"
+  },
+  "dependencies": {
+    "polymer": "Polymer/polymer#0.3.1",
+    "socket.io-client": "Automattic/socket.io-client#1.0.4"
+  },
+  "homepage": "https://github.com/FWeinb/socket-connection",
+  "_release": "6f637d19e4",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6f637d19e46d7c59574fa557acd7fea47a8c8383"
+  },
+  "_source": "git://github.com/FWeinb/socket-connection.git",
+  "_target": "master",
+  "_originalSource": "FWeinb/socket-connection",
+  "_direct": true
+}
