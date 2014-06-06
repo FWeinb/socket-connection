@@ -122,7 +122,7 @@ The `socket-connection` provides the abiliity to connect to a `socket.io` server
   <script>
     Polymer('socket-base', {
 
-      ready : function (){
+      domReady : function (){
         if ( this.parentNode instanceof SocketConnection) {
           this.connect().then(this.connected.bind(this));
         } else {
