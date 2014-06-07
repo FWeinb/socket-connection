@@ -4,12 +4,20 @@
   "authors": [
     "Fabrice Weinberg <fabrice@weinberg.me>"
   ],
+  "keywords" : [
+    "web-component",
+    "web-components",
+    "socket.io",
+    "websockets",
+    "realtime",
+    "polymer"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/fweinb/socket-connection.git"
   },
   "dependencies": {
-    "polymer": "Polymer/polymer#0.3.1",
+    "polymer": "Polymer/polymer#~0.3.1",
     "socket.io-client": "Automattic/socket.io-client#1.0.4"
   }
 }
