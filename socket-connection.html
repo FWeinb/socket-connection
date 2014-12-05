@@ -157,7 +157,7 @@ If the value of `chatMessage` is change, it will be emitted to the server.
 @element socket-emitter
 @status alpha
 -->
-<polymer-element name="socket-emitter" attributes="event eventLocal value auto inital" extends="socket-base">
+<polymer-element name="socket-emitter" attributes="event eventLocal value auto initial" extends="socket-base">
   <script>
     Polymer('socket-emitter', {
 
@@ -196,9 +196,9 @@ If the value of `chatMessage` is change, it will be emitted to the server.
       auto       : false,
 
       /**
-       * Defines if the inital value of this emitter should be transmitted
+       * Defines if the initial value of this emitter should be transmitted
        *
-       * @attribute inital
+       * @attribute initial
        * @type boolean
        * @default false
        */
@@ -210,7 +210,7 @@ If the value of `chatMessage` is change, it will be emitted to the server.
 
       ready : function (){
         this.super();
-        if ( this.inital ) {
+        if ( this.initial ) {
           this.connect().then(this.emit.bind(this));
         }
       },
